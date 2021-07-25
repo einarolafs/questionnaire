@@ -11,13 +11,20 @@ import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './reducers';
 import { FormsService } from './service/forms.service';
 import { FormsEffects } from './effects/forms.effect';
+import { FormComponent } from './components/form/form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCommonModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormComponent
   ],
   imports: [
-BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -26,6 +33,11 @@ BrowserModule,
       logOnly: environment.production 
     }),
     EffectsModule.forRoot([FormsEffects]),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCommonModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [FormsService],
   bootstrap: [AppComponent]

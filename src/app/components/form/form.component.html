@@ -1,0 +1,35 @@
+<div class="form">
+  <ng-container *ngFor="let content of question$ | async" [ngSwitch]="content.type">
+
+      <ng-container *ngSwitchCase="'boolean'">
+        <label class="mat-h3">{{ content.title }}</label>
+        <div class="selection">
+          <button mat-raised-button color="primary" (click)="select(content, 'true')">Yes</button>
+          <button mat-raised-button color="accent" (click)="select(content, 'false')">No</button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'selection'">
+        <label class="mat-h3">{{ content.title }}</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Favorite food</mat-label>
+            <mat-select (input)="input($event)">
+              <mat-option 
+                matNativeControl
+                *ngFor="let selection of content.selection" 
+                [value]="selection">
+                  {{ selection }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="select(content)">{{ getButtonText(content) }}</button>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'number'">
+        <label class="mat-h3">{{ content.title }}</label>
+        <input matInput type="number" (input)="input($event)" />
+        <button mat-raised-button color="accent" (click)="select(content)">{{ getButtonText(content) }}</button>
+      </ng-container>
+
+    </ng-container>
+  </div>

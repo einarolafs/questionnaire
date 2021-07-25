@@ -7,21 +7,8 @@ import { getFormsAction } from './actions/forms.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  forms$: Observable<Record<any, any>>;
-
-  constructor(private store: Store<State>) {
-    this.forms$ = store.select('forms');
-  }
-
-  public ngOnInit() {
-    this.store.dispatch(getFormsAction());
-    this.forms$.subscribe((data) => {
-      // console.log(data);
-    })
-  }
-  
-  title = 'questionnaire';
+  title = 'Questionnaire';
 }

@@ -5,18 +5,24 @@ data:
   questions:
     - id: id1
       type: boolean
+      title: Have you ever been pregnant before?
       paths:
         true: id2
         false: id3
+  
     - id: id2
       type: selection
+      title: Please pick which of the following applies to you.
       selection: 
-        - 1: Yes, I have had children before
-          2: Yes, but the pregnancy was not carried to term due to miscarriage(s)
-          3: Yes, but the pregnancy was not carried to term due to ectopic miscarriage(s)
-          4: Yes, I had a stillbirth
+        - Yes, I have had children before
+        - Yes, but the pregnancy was not carried to term due to miscarriage(s)
+        - Yes, but the pregnancy was not carried to term due to ectopic miscarriage(s)
+        - Yes, I had a stillbirth
+      end: true
+
     - id: id3
       type: number
+      title: How old were you when you had your first period?
       end: true
 
   

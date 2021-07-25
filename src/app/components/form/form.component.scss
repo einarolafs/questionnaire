@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 50%;
+  flex-direction: column;
+}
+
+.selection > * {
+  margin: 10px;
+}
+
+input {
+  padding: 5px;
+  margin-bottom: 15px;
+}
