@@ -1,0 +1,23 @@
+data:
+  id: questionnaire
+  title: Questionnaire
+  submit: /api/questionnaire
+  questions:
+    - id: id1
+      type: boolean
+      paths:
+        true: id2
+        false: id3
+    - id: id2
+      type: selection
+      selection: 
+        - 1: Yes, I have had children before
+          2: Yes, but the pregnancy was not carried to term due to miscarriage(s)
+          3: Yes, but the pregnancy was not carried to term due to ectopic miscarriage(s)
+          4: Yes, I had a stillbirth
+    - id: id3
+      type: number
+      end: true
+
+  
+  
