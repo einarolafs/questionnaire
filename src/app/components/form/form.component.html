@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" *ngIf="!(submitted$ | async)">
   <ng-container *ngFor="let content of question$ | async" [ngSwitch]="content.type">
 
       <ng-container *ngSwitchCase="'boolean'">
@@ -32,4 +32,7 @@
       </ng-container>
 
     </ng-container>
+  </div>
+  <div class="form" *ngIf="(submitted$ | async)">
+    <h2>Submitted</h2>
   </div>

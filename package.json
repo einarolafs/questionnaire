@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run api\" \"npx ng serve\"",
-    "api": "nodemon --watch 'api/' --exec 'ts-node api/index.ts'",
+    "api": "ts-node api/index.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

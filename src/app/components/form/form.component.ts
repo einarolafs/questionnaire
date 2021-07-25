@@ -20,6 +20,8 @@ export class FormComponent implements OnInit {
   private form: Record<any, any> = {}
   public currentValue: string
 
+  public submitted$: Subject<boolean> = new Subject<boolean>();
+
 
   constructor(
     private store: Store<State>
@@ -48,6 +50,7 @@ export class FormComponent implements OnInit {
 
     if (question.end) {
       console.table(this.form);
+      this.submitted$.next(true);
       return;
     }
 

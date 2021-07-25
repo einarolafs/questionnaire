@@ -21,7 +21,7 @@ const startApiServer = (data: any) => {
   
   app.listen(3003);
 
-  console.log('Listening on port: 3003')
+  console.log('API server listening on port: 3003')
 }
 
 fs.readFile(path.resolve(__dirname, './data.yaml'), 'utf8' , (err: any, data: any) => {
