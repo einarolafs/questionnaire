@@ -34,42 +34,41 @@ export class FormComponent implements OnInit {
         this.submit = data.submit;
         this.title = data.title;
 
-        this.questions =  data.questions.reduce((acc: any, { id, ...rest }: any) => {
-          acc[id] = rest;
-          return acc;
-        }, {})
-
-        console.log(data.questions[0]);
+        this.questions =  this.normalizeContent(data)
   
         this.question$.next([data.questions[0]]);
     })
   }
 
   public select(question: any, selection?: string) {
-    console.log(question, selection);
-    if (question.end) {
-      console.log(this.form);
-    }
-
     this.form[question.id] = {
-      id: question.id,
-      value: selection
+      title: question.title,
+      answer: selection ?? this.currentValue
     }
 
-    let nextQuestions = question.paths[selection ?? this.currentValue];
+    if (question.end) {
+      console.table(this.form);
+      return;
+    }
+
+    let nextQuestions = question.paths[selection as string];
 
     this.question$.next([this.questions[nextQuestions]]);
-
-    this.currentValue = '';
   }
 
   public getButtonText({ end }: any) {
     return end ? 'Submit' : 'Next';
   }
 
-  public input($event: any) {
-    console.log($event)
-    this.currentValue = $event.target.value;
+  public input(target: any) {
+    this.currentValue = target.value;
+  }
+
+  private normalizeContent(data: any) {
+    return data.questions.reduce((acc: any, { id, ...rest }: any) => {
+      acc[id] = {id, ...rest};
+      return acc;
+    }, {})
   }
 
 }

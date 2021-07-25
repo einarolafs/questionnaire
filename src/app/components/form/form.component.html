@@ -12,8 +12,8 @@
       <ng-container *ngSwitchCase="'selection'">
         <label class="mat-h3">{{ content.title }}</label>
         <mat-form-field appearance="fill">
-          <mat-label>Favorite food</mat-label>
-            <mat-select (input)="input($event)">
+          <mat-label>Select your answer</mat-label>
+            <mat-select (selectionChange)="input($event)">
               <mat-option 
                 matNativeControl
                 *ngFor="let selection of content.selection" 
@@ -27,7 +27,7 @@
 
       <ng-container *ngSwitchCase="'number'">
         <label class="mat-h3">{{ content.title }}</label>
-        <input matInput type="number" (input)="input($event)" />
+        <input matInput type="number" (input)="input($event.target)" />
         <button mat-raised-button color="accent" (click)="select(content)">{{ getButtonText(content) }}</button>
       </ng-container>
 
