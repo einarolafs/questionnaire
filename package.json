@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "api": "nodemon --watch 'api/data.yaml' --exec 'ts-node api/index.ts'",
+    "start": "concurrently \"npm run api\" \"npx ng serve\"",
+    "api": "nodemon --watch 'api/' --exec 'ts-node api/index.ts'",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,8 +19,11 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
+    "@ngrx/effects": "^12.3.0",
+    "@ngrx/entity": "^12.3.0",
     "@ngrx/store": "^12.3.0",
     "@ngrx/store-devtools": "^12.3.0",
+    "concurrently": "^6.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

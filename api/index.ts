@@ -8,6 +8,10 @@ const startApiServer = (data: any) => {
 
   var app = http.createServer((req: any, res: any) => {
     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Headers', '*');
     res.end(JSON.stringify(info, null, 2));
   });
 

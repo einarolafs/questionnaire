@@ -4,24 +4,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from './reducers';
+import { FormsService } from './service/forms.service';
+import { FormsEffects } from './effects/forms.effect';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
       logOnly: environment.production 
     }),
+    EffectsModule.forRoot([FormsEffects]),
   ],
-  providers: [],
+  providers: [FormsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

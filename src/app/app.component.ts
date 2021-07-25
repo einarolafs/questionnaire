@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from './reducers';
+import { getFormsAction } from './actions/forms.actions';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,9 @@ export class AppComponent {
   }
 
   public ngOnInit() {
+    this.store.dispatch(getFormsAction());
     this.forms$.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
     })
   }
   
